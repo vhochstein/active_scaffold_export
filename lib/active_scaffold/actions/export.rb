@@ -61,7 +61,7 @@ module ActiveScaffold::Actions
       export_columns = export_config.columns.reject { |col| params[:export_columns][col.name.to_sym].nil? }
 
       includes_for_export_columns = export_columns.collect{ |col| col.includes }.flatten.uniq.compact
-      self.active_scaffold_joins.concat includes_for_export_columns
+      self.active_scaffold_includes.concat includes_for_export_columns
 
       find_options = { :sorting => active_scaffold_config.list.user.sorting }
       params[:search] = session[:search]
