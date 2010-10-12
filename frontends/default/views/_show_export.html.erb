@@ -1,9 +1,15 @@
 <%
   url_options = params_for(:action => :export, :format => 'csv')
   export_config = active_scaffold_config.export
+  options = {:onsubmit => onsubmit,
+           :id => element_form_id(:action => :export),
+           :class => "as_form #{'export'}",
+           :method => :get,
+           'data-loading' => true}
+  options[:remote] = true if request.xhr?
 -%>
 
-<%= form_tag url_for(url_options)%>
+<%= form_tag url_options, options%>
 <h3><%=as_('Columns to Export')%></h3>
 <div class="columns checkbox-list"> 
 <% export_config.columns.each do |column| -%>
@@ -34,6 +40,6 @@
 <div class="separator"></div>
   
   <%= submit_tag as_('Export'), :class => "submit" %>
-  <%= link_to as_('Cancel'), params_for(:action => 'list'), :class => 'cancel' %>
+  <%= link_to as_('Cancel'), params_for(:action => 'index'), :class => 'cancel', :remote => true %>
   <%= loading_indicator_tag(:action => :export) %>
 </form>
