@@ -6,7 +6,6 @@
            :class => "as_form #{'export'}",
            :method => :get,
            'data-loading' => true}
-  options[:remote] = true if request.xhr?
 -%>
 
 <%= form_tag url_options, options%>
