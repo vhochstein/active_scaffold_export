@@ -12,5 +12,5 @@ ActiveScaffold::Config::Core.class_eval do
       :export_force_quotes, :export_default_full_download,
       :export_default_delimiter, :export_default_skip_header
 
-  ActionController::Resources::Resource::ACTIVE_SCAFFOLD_ROUTING[:collection][:show_export] = :get
+  ActionDispatch::Routing::ACTIVE_SCAFFOLD_CORE_ROUTING[:collection][:show_export] = :get
 end
