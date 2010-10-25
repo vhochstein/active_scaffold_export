@@ -1,5 +1,5 @@
 module ActiveScaffold::Config
-  class Export < Base
+  class Export < ActiveScaffold::Config::Form
     self.crud_type = :read
 
     def initialize(core_config)
@@ -67,6 +67,10 @@ module ActiveScaffold::Config
     def columns=(val)
       @columns = ActiveScaffold::DataStructures::ActionColumns.new(*val)
       @columns.action = self
+    end
+
+    def multipart?
+      false
     end
   end
 end
