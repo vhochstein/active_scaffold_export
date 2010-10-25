@@ -18,11 +18,7 @@ module ActiveScaffold::Actions
       export_config = active_scaffold_config.export
       respond_to do |wants|
         wants.html do
-          if successful?
-            render(:partial => 'show_export', :layout => true)
-          else
-            return_to_main
-          end
+          render(:partial => 'show_export', :layout => true)
         end
         wants.js do
           render(:partial => 'show_export', :layout => false)
