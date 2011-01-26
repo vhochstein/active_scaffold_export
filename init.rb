@@ -1,4 +1,4 @@
-ACTIVE_SCAFFOLD_EXPORT_PLUGIN = true
+ACTIVE_SCAFFOLD_EXPORT_INSTALLED = :plugin
 
 require 'active_scaffold_export'
 

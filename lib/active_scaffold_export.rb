@@ -2,14 +2,24 @@ ActiveScaffold rescue throw "should have included ActiveScaffold plug in first. 
 
 # Load our overrides
 require "#{File.dirname(__FILE__)}/active_scaffold_export/config/core.rb"
-require "#{File.dirname(__FILE__)}/active_scaffold/config/export.rb"
-require "#{File.dirname(__FILE__)}/active_scaffold/actions/export.rb"
-require "#{File.dirname(__FILE__)}/active_scaffold/helpers/view_helpers_override.rb"
-require "#{File.dirname(__FILE__)}/active_scaffold/helpers/export_helpers.rb"
 
 module ActiveScaffoldExport
   def self.root
     File.dirname(__FILE__) + "/.."
+  end
+end
+
+module ActiveScaffold
+  module Actions
+    ActiveScaffold.autoload_subdir('actions', self, File.dirname(__FILE__))
+  end
+
+  module Config
+    ActiveScaffold.autoload_subdir('config', self, File.dirname(__FILE__))
+  end
+
+  module Helpers
+    ActiveScaffold.autoload_subdir('helpers', self, File.dirname(__FILE__))
   end
 end
 
@@ -20,10 +30,10 @@ ActionView::Base.send(:include, ActiveScaffold::Helpers::ExportHelpers)
 ## Run the install assets script, too, just to make sure
 ## But at least rescue the action in production
 ##
-Rails::Application.initializer("active_scaffold_export.install_assets") do
+Rails::Application.initializer("active_scaffold_export.install_assets", :after => "active_scaffold.install_assets") do
   begin
     ActiveScaffoldAssets.copy_to_public(ActiveScaffoldExport.root)
   rescue
     raise $! unless Rails.env == 'production'
   end
-end unless defined?(ACTIVE_SCAFFOLD_EXPORT_PLUGIN) && ACTIVE_SCAFFOLD_EXPORT_PLUGIN == true
+end unless defined?(ACTIVE_SCAFFOLD_EXPORT_INSTALLED) && ACTIVE_SCAFFOLD_EXPORT_INSTALLED == :plugin
