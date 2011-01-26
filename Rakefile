@@ -10,7 +10,7 @@ end
 require 'rake'
 
 require 'jeweler'
-require './lib/active_scaffold_config_export/version.rb'
+require './lib/active_scaffold_export/version.rb'
 
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
