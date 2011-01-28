@@ -2,12 +2,13 @@
 ActiveScaffold::Config::Core.class_eval do
   # For some note obvious reasons, the class variables need to be defined
   # *before* the cattr !!
-  @@export_show_form = true
-  @@export_allow_full_download = true
-  @@export_default_full_download = true
-  @@export_force_quotes = false
-  @@export_default_skip_header = false
-  @@export_default_delimiter = ','
+  self.send :class_variable_set, :@@export_show_form, true
+  self.send :class_variable_set, :@@export_allow_full_download, true
+  self.send :class_variable_set, :@@export_default_full_download, true
+  self.send :class_variable_set, :@@export_force_quotes, false
+  self.send :class_variable_set, :@@export_default_skip_header, false
+  self.send :class_variable_set, :@@export_default_delimiter, ','
+  
   cattr_accessor :export_show_form, :export_allow_full_download,
       :export_force_quotes, :export_default_full_download,
       :export_default_delimiter, :export_default_skip_header
