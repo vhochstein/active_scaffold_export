@@ -1,5 +1,3 @@
-ACTIVE_SCAFFOLD_EXPORT_INSTALLED = :plugin
-
 require 'active_scaffold_export'
 
 begin

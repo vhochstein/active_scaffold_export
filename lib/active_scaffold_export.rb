@@ -1,7 +1,7 @@
 ActiveScaffold rescue throw "should have included ActiveScaffold plug in first.  Please make sure that this plug-in comes alphabetically after the ActiveScaffold plug-in"
 
 # Load our overrides
-require "#{File.dirname(__FILE__)}/active_scaffold_export/config/core.rb"
+require "active_scaffold_export/config/core.rb"
 
 module ActiveScaffoldExport
   def self.root
@@ -36,4 +36,4 @@ Rails::Application.initializer("active_scaffold_export.install_assets", :after =
   rescue
     raise $! unless Rails.env == 'production'
   end
-end unless defined?(ACTIVE_SCAFFOLD_EXPORT_INSTALLED) && ACTIVE_SCAFFOLD_EXPORT_INSTALLED == :plugin
+end if defined?(ACTIVE_SCAFFOLD_EXPORT_GEM)
