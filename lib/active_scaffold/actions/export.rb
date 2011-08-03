@@ -66,6 +66,7 @@ module ActiveScaffold::Actions
       do_segment_search rescue nil
       unless params[:full_download] == 'true'
         find_options.merge!({
+          :pagination => active_scaffold_config.list.pagination,
           :per_page => active_scaffold_config.list.user.per_page,
           :page => active_scaffold_config.list.user.page
         })
