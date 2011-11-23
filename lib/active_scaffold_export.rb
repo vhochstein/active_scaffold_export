@@ -1,5 +1,8 @@
 ActiveScaffold rescue throw "should have included ActiveScaffold plug in first.  Please make sure that this plug-in comes alphabetically after the ActiveScaffold plug-in"
 
+require 'active_scaffold_export/engine'
+require 'active_scaffold_export/version'
+
 # Load our overrides
 require "active_scaffold_export/config/core.rb"
 
