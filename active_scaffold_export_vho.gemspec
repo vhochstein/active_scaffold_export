@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     "lib/active_scaffold/helpers/export_helpers.rb",
     "lib/active_scaffold_export.rb",
     "lib/active_scaffold_export/config/core.rb",
+    "lib/active_scaffold_export/engine.rb",
     "lib/active_scaffold_export/version.rb",
     "lib/active_scaffold_export_vho.rb"
   ]
