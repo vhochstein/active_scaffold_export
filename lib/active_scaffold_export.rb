@@ -24,16 +24,3 @@ module ActiveScaffold
 end
 
 ActionView::Base.send(:include, ActiveScaffold::Helpers::ExportHelpers)
-
-
-##
-## Run the install assets script, too, just to make sure
-## But at least rescue the action in production
-##
-Rails::Application.initializer("active_scaffold_export.install_assets", :after => "active_scaffold.install_assets") do
-  begin
-    ActiveScaffoldAssets.copy_to_public(ActiveScaffoldExport.root)
-  rescue
-    raise $! unless Rails.env == 'production'
-  end
-end if defined?(ACTIVE_SCAFFOLD_EXPORT_GEM)
