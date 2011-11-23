@@ -1,4 +1,5 @@
 .active-scaffold-header div.actions a.show_export {
+  background-image: url(<%= asset_path 'export.png' %>);
   background-image: url(../../../images/active_scaffold/default/export.png);
   background-position: 1px 50%;
   background-repeat: no-repeat;
@@ -24,4 +25,13 @@
 }
 .active-scaffold div.show_export-view label #delimiter {
   font-family: monospace;
+}
+
+.as_touch .active-scaffold-header div.actions a.show_export {
+  padding: 7px 5px 7px 25px;
+}
+
+.as_touch .active-scaffold .active-scaffold-header div.actions > a.show_export {
+  padding: 7px 5px 7px 25px;
+  background-position: 5px 50%;
 }
