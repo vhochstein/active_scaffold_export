@@ -8,6 +8,7 @@ module ActiveScaffoldExport
           require "active_scaffold_export/config/core.rb"
         end
         ActiveSupport.on_load(:action_view) do
+          require "active_scaffold/helpers/export_helpers.rb"
           include ActiveScaffold::Helpers::ExportHelpers
         end
       end
