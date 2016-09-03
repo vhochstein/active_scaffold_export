@@ -74,7 +74,7 @@ module ActiveScaffold::Actions
 
       @export_config = export_config
       @export_columns = export_columns
-      @records = find_page(find_options).items
+      @records = find_page(find_options)
     end
 
     # The default name of the downloaded file.
